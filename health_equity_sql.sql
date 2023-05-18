@@ -1,7 +1,7 @@
 SELECT
   CONCAT(c.FirstName, ' ', c.LastName) AS fullname,
   c.Age as age,
-  o.OrderIDnas orderid,
+  o.OrderID as orderid,
   o.DateCreated as datecreated,
   o.MethodofPurchase AS PurchaseMethod,
   od.ProductNumber,
