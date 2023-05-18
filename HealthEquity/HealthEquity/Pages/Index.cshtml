@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Cars Page";
+}
+
+<h1>Cars</h1>
+
+@foreach (var car in Model.Cars)
+{
+    <div>
+        <h3>@car.Make @car.Model</h3>
+        <p>Year: @car.Year</p>
+        <p>Doors: @car.Doors</p>
+        <p>Color: @car.Color</p>
+
+        <form method="post" asp-page-handler="GuessPrice" asp-route-carId="@car.Id">
+            <label for="guess">Guess the Price:</label>
+            <input type="number" id="guess" name="guess" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        @if (TempData["WellDoneMessage" + car.Id] != null)
+        {
+            <p style="color: green">@TempData["WellDoneMessage" + car.Id]</p>
+        }
+    </div>
+}
